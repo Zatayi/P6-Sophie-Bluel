@@ -34,7 +34,7 @@ async function getCategories() {
 
 async function displayCategoriesButtons() {
     const categories = await getCategories()
-    console.log(categories)
+    
     categories.forEach((category) => {
         const btn = document.createElement("button")
         btn.textContent = category.name
@@ -48,21 +48,24 @@ displayCategoriesButtons()
 
 async function categoriesFilterClick(){
     const book = await getWorks()
-    console.log(book)
+    
     const buttons = document.querySelectorAll(".filters button")
+    
     buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
-        btnId = e.target.id
+        const btnId = e.target.id
         gallery.innerHTML = ""
         if (btnId !== "0") {
             const bookCategoryFilter = book.filter((work) => {
                 return work.categoryId == btnId
             })
-            bookCategoryFilter.forEach(work => {
-                creatework()
+            bookCategoryFilter.forEach((work) => {
+                creatework(work)
             });
+        } else {
+            
         }
-        console.log(btnId)
+        
     })
 })
 
