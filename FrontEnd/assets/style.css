@@ -35,8 +35,8 @@ body {
 	background-color: #FFFEF8;
 }
 .logbody header{
-	margin-left: 80px;
-	margin-right: 80px;
+	margin-left: 20px;
+	margin-right: 20px;
 }
 a{
 	color: black;
@@ -150,7 +150,7 @@ li:hover {
 }
 
 button{
-	
+	cursor: pointer;
 	align-items: center;
 	font-family: 'Syne';
 	font-weight: 700;
@@ -172,6 +172,7 @@ button{
 button:hover{
 	background-color: #1D6154;
 	color: white;
+	border: none;
 }
 
 .gallery {
@@ -245,9 +246,14 @@ input[type="submit"]{
 	margin : 2em auto ;
 	width: 180px;
 	height: 36px;
-	border:none;
+	
 	text-align: center;
 	border-radius: 60px ;
+	cursor: pointer;
+}
+input[type="submit"]:hover{
+	background-color: white;
+	color: #1D6154;
 }
 
 #email {
@@ -269,6 +275,6 @@ input[type="submit"]{
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
-	margin: 2em
+	margin-top: 2em;
 }
 
