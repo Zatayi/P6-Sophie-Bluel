@@ -169,7 +169,7 @@ button{
 	border-radius: 60px ;
 }
 
-button:hover{
+button:focus{
 	background-color: #1D6154;
 	color: white;
 	border: none;
@@ -277,4 +277,3 @@ footer nav ul {
 	justify-content: flex-end;
 	margin-top: 2em;
 }
-
