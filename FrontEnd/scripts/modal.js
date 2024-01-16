@@ -1,4 +1,4 @@
-const closemodal = document.querySelector(".containerModal .fa-xmark");
+const closemodal = document.querySelector(".containerModal .fa-solid fa-xmark");
 
 closemodal.addEventListener("click"), () => {
     console.log("closemodal")

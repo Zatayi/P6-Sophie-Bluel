@@ -1,4 +1,4 @@
-import { gallery, filters, btnFilterAll } from "./domLinker.js";
+import { gallery, filters, btnFilterAll, ModalListGallery } from "./domLinker.js";
 import { getWorks, getCategories, getWorksByCategoryId } from "./api.js";
 
 // console.log(gallery)
@@ -11,7 +11,7 @@ import { getWorks, getCategories, getWorksByCategoryId } from "./api.js";
 
 const creatework = data => {
     gallery.innerHTML = ''
-
+    
     data.forEach(element => {
         const img = document.createElement("img");
         const figure = document.createElement("figure");
@@ -23,7 +23,23 @@ const creatework = data => {
         gallery.appendChild(figure);
     });
 }
-
+const createworkmodal = data => {
+    ModalListGallery.innerHTML = ''
+    
+    data.forEach(element => {
+        const img = document.createElement("img");
+        const figure = document.createElement("figure");
+        const span = document.createElement("span")
+        const trash = document.createElement("i")
+        trash.classList.add("fa-solid","fa-trash-can")
+        img.src = element.imageUrl;
+        span.appendChild(trash)
+        figure.appendChild(img);
+        figure.appendChild(span);
+        ModalListGallery.appendChild(figure);
+    });
+}
+getWorks().then(data => createworkmodal(data))
 getWorks().then(data => creatework(data))
 
 //*************catégories****************//
