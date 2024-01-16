@@ -11,6 +11,7 @@
 		rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
+	<script src="https://kit.fontawesome.com/74414832f3.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -21,12 +22,20 @@
 				<li><a href="index.html#projets">projets</a></li>
 				<li><a href="index.html#contact">contact</a></li>
 				<li><a href="login.html">login</a></li>
-				<li><a href="#" class="Admin"></a></li>
+				<li></li>
 				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
 		</nav>
 	</header>
 	<main>
+		<div class="containerModal" aria-hidden="true">
+			<div class="modalGallery">
+				<span><i class="fa-solid fa-xmark"></i></span>
+				<h3>Galerie photo</h3>
+				<div class="ModalListGallery"></div>
+				<button>Ajouter une photo</button>
+			</div>
+		</div>
 		<section id="introduction">
 			<figure>
 				<img src="./assets/images/sophie-bluel.png" alt="">
@@ -43,17 +52,16 @@
 			</article>
 		</section>
 		<section id="portfolio">
-			<h2>Mes Projets</h2>
+			<h2>Mes Projets <span class="modifier"><i class="fa-regular fa-pen-to-square"></i>modifier</span></h2>
 			<div class="filters">
-				<button id="0">Tous</button>
-				
+				<button id="filter-all">Tous</button>
 			</div>
 			<div class="categories">
-				
+
 			</div>
 			<div class="gallery">
-				
-				
+
+
 
 			</div>
 		</section>
@@ -79,6 +87,7 @@
 			</ul>
 		</nav>
 	</footer>
+	
 	<script type="module" src="./scripts/index.js"></script>
 </body>
 

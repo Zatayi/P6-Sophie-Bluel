@@ -277,3 +277,58 @@ footer nav ul {
 	justify-content: flex-end;
 	margin-top: 2em;
 }
+.containerModal{
+	display: none;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left:0px;
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+.containerModal h3{
+	display: flex;
+	justify-content: center;
+}
+
+.modalGallery{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	background-color: white;
+	width: 50%;
+	height: 50%;
+	border-radius: 5px;
+	position: relative;
+}
+.modalGallery button{
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin : 2em auto ;
+	width: 180px;
+	height: 36px;
+	text-align: center;
+	border-radius: 60px ;
+	cursor: pointer;
+}
+
+
+.fa-xmark{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	padding-right: 20px;
+	padding-top: 20px;
+}
+.modifier{
+	display:none;
+	padding-left: 20px;
+	color: black;
+	font-size: 15px;
+	cursor: pointer;
+}
