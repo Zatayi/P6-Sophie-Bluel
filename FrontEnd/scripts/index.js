@@ -1,7 +1,7 @@
 import { gallery, filters, btnFilterAll, ModalListGallery, modifier, aLogin } from "./domLinker.js";
 import { getWorks, getCategories, getWorksByCategoryId } from "./api.js";
 import Modal from "./modal.js";
-import addphotomodal from "./addphotomodal.js";
+import Addphotomodal from "./addphotomodal.js";
 
 
 const createWorks = data => {
@@ -78,7 +78,7 @@ if (localStorage.token) {
 aLogin.addEventListener('click', () => localStorage.removeItem('token'))
 
 Modal()
-
+Addphotomodal()
 //function deleteWorks() {
   //  const TrashAll = document.querySelectorAll(".fa-trash-can")
   //  TrashAll.forEach(trash =>{

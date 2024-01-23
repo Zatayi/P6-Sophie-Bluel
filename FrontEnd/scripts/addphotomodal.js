@@ -1,4 +1,4 @@
-import { addphotomodal, iconCloseModalphoto, } from "./domLinker.js"
+import { photoModal, iconCloseModalphoto, } from "./domLinker.js"
 
 const Addphotomodal = () => {
     const closeModalphoto = () => {
@@ -11,7 +11,7 @@ const Addphotomodal = () => {
     }
 
     /*** event listerner modal ***/
-    iconCloseModal.addEventListener('click', () => closeModalphoto())
+    iconCloseModalphoto.addEventListener('click', () => closeModalphoto())
 }
 
 export default Addphotomodal

@@ -278,7 +278,7 @@ footer nav ul {
 	margin-top: 2em;
 }
 .containerModal{
-	display: none;
+	display: flex;
 	justify-content: center;
 	align-items: center;
 	position: fixed;
@@ -294,6 +294,7 @@ h3{
 	display: flex;
 	justify-content: center;
 	padding-top: 50px;
+	padding-bottom: 20px;
 }
 
 .modalGallery{
@@ -355,7 +356,7 @@ h3{
 	cursor: pointer;	
 }
 .AddPhotoModal{
-	display: flex;
+	display: none;
 	justify-content: center;
 	align-items: center;
 	position: fixed;

@@ -1,4 +1,4 @@
-import { modal, iconCloseModal, modifier } from "./domLinker.js"
+import { backarrow, modal, iconCloseModal, modifier, photoModal } from "./domLinker.js"
 
 const Modal = () => {
     const closeModal = () => {
@@ -17,7 +17,15 @@ const Modal = () => {
 }
 export default Modal
 
+newphotobtn.addEventListener('click', function(){
+    photoModal.style.display = 'flex';
+    modal.style.display = 'none';
+})
 
+backarrow.addEventListener('click', function(){
+    modal.style.display = 'flex';
+    photoModal.style.display = 'none';
+})
 
 
 
