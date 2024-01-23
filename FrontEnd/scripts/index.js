@@ -81,26 +81,4 @@ aLogin.addEventListener('click', () => localStorage.removeItem('token'))
 Modal()
 Addphotomodal()
 
-function deleteWorks() {
-    TrashAll.forEach(trash =>{
-        trash.addEventListener("click",(e)=>{
-            const id = trash.id
-            const init ={
-                method:"DELETE",
-                headers:{"content-Type":"application/json"}
-            }
-            fetch("http://localhost:5678/api/works/" +id,init)
-            .then((response)=>{
-                if (!response.ok){
-                console.log("success")
-                }
-                return response.json()
-            })
-        })
-        
-        .then((data)=>{
-            console.log("error",data)
-        })
-    })
-}
 
