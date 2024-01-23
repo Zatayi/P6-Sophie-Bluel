@@ -15,6 +15,9 @@ const Modal = () => {
 
     modifier.addEventListener('click', () => openModal())
 }
-
 export default Modal
+
+
+
+
 

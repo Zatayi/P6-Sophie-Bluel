@@ -1,6 +1,7 @@
 import { gallery, filters, btnFilterAll, ModalListGallery, modifier, aLogin } from "./domLinker.js";
 import { getWorks, getCategories, getWorksByCategoryId } from "./api.js";
 import Modal from "./modal.js";
+import addphotomodal from "./addphotomodal.js";
 
 
 const createWorks = data => {
@@ -25,7 +26,9 @@ const creatework = data => {
     gallery.appendChild(figure);
 }
 
-// modal
+//deleteWorks()
+getWorks().then(data => createWorks(data))
+
 const createWorkmodal = data => {
     const img = document.createElement("img");
     const figure = document.createElement("figure");
@@ -38,8 +41,6 @@ const createWorkmodal = data => {
     figure.appendChild(span);
     ModalListGallery.appendChild(figure);
 }
-deleteWorks()
-getWorks().then(data => createWorks(data))
 
 const displayCategoriesButtons = data => {
     data.forEach(category => {
@@ -78,31 +79,27 @@ aLogin.addEventListener('click', () => localStorage.removeItem('token'))
 
 Modal()
 
-function deleteWorks() {
-    const TrashAll = document.querySelectorAll(".fa-trash-can")
-    TrashAll.forEach(trash =>{
-        trash.addEventListener("click",(e)=>{
-            const id = trash.id
-            const init ={
-                method:"DELETE",
-                headers:{"content-Type":"application/json"}
-            }
-            fetch("http://localhost:5678/api/works/{id}" +id,init)
-            .then((response)=>{
-                if (!response.ok){
-                console.log("success")
-                }
-                return response.json()
-            })
-        })
-        .then((data)=>{
-            console.log("error",data)
-        })
-    })
-}
+//function deleteWorks() {
+  //  const TrashAll = document.querySelectorAll(".fa-trash-can")
+  //  TrashAll.forEach(trash =>{
+    //    trash.addEventListener("click",(e)=>{
+     //       const id = trash.id
+      //      const init ={
+     //           method:"DELETE",
+         //       headers:{"content-Type":"application/json"}
+         //   }
+         //   fetch("http://localhost:5678/api/works/" +id,init)
+           // .then((response)=>{
+             //   if (!response.ok){
+              //  console.log("success")
+              //  }
+             //   return response.json()
+          //  })
+       // })
+       // .then((data)=>{
+        //    console.log("error",data)
+       // })
+    //})
+//}
 
-//bouton activé chargement page//
 
-function setFocusToButton(){
-    document.getElementById("filter-all").focus();
-}
