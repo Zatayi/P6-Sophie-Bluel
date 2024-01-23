@@ -1,54 +1,45 @@
-import { gallery, filters, btnFilterAll, ModalListGallery } from "./domLinker.js";
+import { gallery, filters, btnFilterAll, ModalListGallery, modifier, aLogin } from "./domLinker.js";
 import { getWorks, getCategories, getWorksByCategoryId } from "./api.js";
-
-// console.log(gallery)
-// console.log(filters)
-// async function getWorks() {
-//     const response = await fetch("http://localhost:5678/api/works");
-//     return await response.json();
-// }
+import Modal from "./modal.js";
 
 
-const creatework = data => {
+const createWorks = data => {
     gallery.innerHTML = ''
-    
-    data.forEach(element => {
-        const img = document.createElement("img");
-        const figure = document.createElement("figure");
-        const figcaption = document.createElement("figcaption");
-        img.src = element.imageUrl;
-        figcaption.textContent = element.title;
-        figure.appendChild(img);
-        figure.appendChild(figcaption);
-        gallery.appendChild(figure);
-    });
-}
-const createworkmodal = data => {
     ModalListGallery.innerHTML = ''
-    
+
     data.forEach(element => {
-        const img = document.createElement("img");
-        const figure = document.createElement("figure");
-        const span = document.createElement("span")
-        const trash = document.createElement("i")
-        trash.classList.add("fa-solid","fa-trash-can")
-        img.src = element.imageUrl;
-        span.appendChild(trash)
-        figure.appendChild(img);
-        figure.appendChild(span);
-        ModalListGallery.appendChild(figure);
-    });
+        createWorkmodal(element)
+        creatework(element)
+    })
 }
-getWorks().then(data => createworkmodal(data))
-getWorks().then(data => creatework(data))
 
-//*************catégories****************//
+// home page
+const creatework = data => {
+    const img = document.createElement("img");
+    const figure = document.createElement("figure");
+    const figcaption = document.createElement("figcaption");
+    img.src = data.imageUrl;
+    figcaption.textContent = data.title;
+    figure.appendChild(img);
+    figure.appendChild(figcaption);
+    gallery.appendChild(figure);
+}
 
-// async function getCategories() {
-//     const response = await fetch("http://localhost:5678/api/categories");
-//     return await response.json();
-// };
+// modal
+const createWorkmodal = data => {
+    const img = document.createElement("img");
+    const figure = document.createElement("figure");
+    const span = document.createElement("span")
+    const trash = document.createElement("i")
+    trash.classList.add("fa-solid", "fa-trash-can")
+    img.src = data.imageUrl;
+    span.appendChild(trash)
+    figure.appendChild(img);
+    figure.appendChild(span);
+    ModalListGallery.appendChild(figure);
+}
 
+getWorks().then(data => createWorks(data))
 
 const displayCategoriesButtons = data => {
     data.forEach(category => {
@@ -58,38 +49,37 @@ const displayCategoriesButtons = data => {
         filters.appendChild(btn);
 
         btn.addEventListener('click', () => {
-            getWorksByCategoryId(category.id).then(data => creatework(data))
+            getWorksByCategoryId(category.id)
+                .then(data => {
+                    gallery.innerHTML = ''
+                    data.forEach(element => creatework(element))
+                })
         })
     });
 }
 
 btnFilterAll.addEventListener('click', () => {
-    getWorks().then(data => creatework(data))
+    getWorks().then(data => {
+        gallery.innerHTML = ''
+        data.forEach(element => creatework(element))
+    })
 })
 
 getCategories().then(data => displayCategoriesButtons(data))
 
-//filters categories click//
 
-// async function categoriesFilterClick() {
-//     const book = await getWorks();
-//     const buttons = document.querySelectorAll(".filters button");
-//     console.log(buttons)
-//     buttons.forEach((button) => {
-//         button.addEventListener("click", (e) => {
-//             ClickId = e.target.id;
-//             console.log(btnId);
-//             gallery.innerHTML = "";
-//             if (ClickId !== "0") {
-//                 const bookCategoryFilter = book.filter((work) => {
-//                     return work.categoryId == ClickId;
-//                 })
-//                 bookCategoryFilter.forEach((work) => {
-//                     creatework(work);
-//                 });
-//             }
-//         });
-//     });
+if (localStorage.token) {
+    modifier.style.display = "flex"
+    filters.style.display = 'none'
+    aLogin.innerHTML = 'Logout'
+}
 
-// }
-// categoriesFilterClick()
+aLogin.addEventListener('click', () => localStorage.removeItem('token'))
+
+Modal()
+
+function deleteWorks() {
+    const TrashAll = document.querySelectorAll(".fa-trash-can")
+    console.log(TrashAll)
+}
+deleteWorks

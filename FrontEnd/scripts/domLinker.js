@@ -2,6 +2,12 @@
 export const gallery = document.querySelector(".gallery")
 export const filters = document.querySelector(".filters")
 export const btnFilterAll = document.querySelector('#filter-all')
+/*** index.html - admin ***/
+export const modifier = document.querySelector('.modifier')
+export const aLogin = document.getElementById('a-login')
+/*** index.html - modal ***/
+export const modal = document.querySelector('.containerModal')
+export const iconCloseModal = document.querySelector(".containerModal .fa-xmark");
 export const ModalListGallery = document.querySelector(".ModalListGallery")
 /*** login.html ***/
 export const formLogin = document.querySelector('.form')

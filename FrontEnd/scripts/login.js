@@ -16,20 +16,5 @@ formLogin.addEventListener("submit", e => {
       element.remove()
     })
     .catch(error => alert(error))
-    //const login = false;
+  //const login = false;
 });
-
-
-function getConnexion() {
-  const token = JSON.parse(localStorage.getItem('auth')).token;
-  return 'Bearer ' + token;
-}
-
-function Connected() {
-  const connecting = getConnexion() ? true : false;
-  return connecting;
-}
-
-if (Connected()) {
-  modifier.style.display = "flex";
-}
