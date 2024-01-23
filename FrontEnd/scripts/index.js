@@ -38,7 +38,7 @@ const createWorkmodal = data => {
     figure.appendChild(span);
     ModalListGallery.appendChild(figure);
 }
-
+deleteWorks()
 getWorks().then(data => createWorks(data))
 
 const displayCategoriesButtons = data => {
@@ -80,6 +80,29 @@ Modal()
 
 function deleteWorks() {
     const TrashAll = document.querySelectorAll(".fa-trash-can")
-    console.log(TrashAll)
+    TrashAll.forEach(trash =>{
+        trash.addEventListener("click",(e)=>{
+            const id = trash.id
+            const init ={
+                method:"DELETE",
+                headers:{"content-Type":"application/json"}
+            }
+            fetch("http://localhost:5678/api/works/{id}" +id,init)
+            .then((response)=>{
+                if (!response.ok){
+                console.log("success")
+                }
+                return response.json()
+            })
+        })
+        .then((data)=>{
+            console.log("error",data)
+        })
+    })
 }
-deleteWorks
+
+//bouton activé chargement page//
+
+function setFocusToButton(){
+    document.getElementById("filter-all").focus();
+}
