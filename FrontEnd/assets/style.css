@@ -294,12 +294,14 @@ h3{
 	display: flex;
 	justify-content: center;
 	padding-top: 50px;
-	padding-bottom: 20px;
+	
 }
-
+figure {
+	padding-bottom: 40px;
+}
 .modalGallery{
-	height: 630px;
-	width: 688px;
+	height: 688px;
+	width: 630px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -321,6 +323,7 @@ h3{
 }
 .modalGallery img{
 	height: 108px;
+	
 }
 .ModalListGallery{
 	margin: auto;
@@ -328,7 +331,7 @@ h3{
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	gap: 90px;
+	gap: 80px;
 	padding-right: 120px;
 	padding-left: 90px;
 	
@@ -377,14 +380,19 @@ h3{
 	margin-left: 100px;
 }
 .Addphoto p{
-	color:#B9C5CC;
+	color:#444444;
+	font-size: 10px;
 }
 
 .Addphoto button{
-	background-color: #B9C5CC;
+	background-color: #CBD6DC;
 	border: none;
 	color: #306685;
 	font-size: small;
+}
+
+#valider{
+	background-color: #A7A7A7;
 }
 .fa-image{
 	font-size: 76px;

@@ -17,15 +17,16 @@ const Modal = () => {
 }
 export default Modal
 
+//bouton > photomodal//
 newphotobtn.addEventListener('click', function(){
     photoModal.style.display = 'flex';
     modal.style.display = 'none';
 })
 
+//arrow return//
 backarrow.addEventListener('click', function(){
     modal.style.display = 'flex';
     photoModal.style.display = 'none';
 })
 
-
-
+//Delete work//

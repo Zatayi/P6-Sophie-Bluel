@@ -12,6 +12,7 @@ export const iconCloseModal = document.querySelector(".containerModal .fa-xmark"
 export const iconCloseModalphoto = document.querySelector(".AddPhotoModal .fa-xmark");
 export const backarrow = document.querySelector(".AddPhotoModal .fa-arrow-left")
 export const ModalListGallery = document.querySelector(".ModalListGallery")
+export const TrashAll = document.querySelectorAll(".fa-trash-can")
 /*** login.html ***/
 export const formLogin = document.querySelector('.form')
 export const email = document.getElementById("email")

@@ -1,7 +1,8 @@
-import { gallery, filters, btnFilterAll, ModalListGallery, modifier, aLogin } from "./domLinker.js";
+import { gallery, filters, btnFilterAll, ModalListGallery, modifier, aLogin, TrashAll } from "./domLinker.js";
 import { getWorks, getCategories, getWorksByCategoryId } from "./api.js";
 import Modal from "./modal.js";
 import Addphotomodal from "./addphotomodal.js";
+
 
 
 const createWorks = data => {
@@ -79,27 +80,27 @@ aLogin.addEventListener('click', () => localStorage.removeItem('token'))
 
 Modal()
 Addphotomodal()
-//function deleteWorks() {
-  //  const TrashAll = document.querySelectorAll(".fa-trash-can")
-  //  TrashAll.forEach(trash =>{
-    //    trash.addEventListener("click",(e)=>{
-     //       const id = trash.id
-      //      const init ={
-     //           method:"DELETE",
-         //       headers:{"content-Type":"application/json"}
-         //   }
-         //   fetch("http://localhost:5678/api/works/" +id,init)
-           // .then((response)=>{
-             //   if (!response.ok){
-              //  console.log("success")
-              //  }
-             //   return response.json()
-          //  })
-       // })
-       // .then((data)=>{
-        //    console.log("error",data)
-       // })
-    //})
-//}
 
+function deleteWorks() {
+    TrashAll.forEach(trash =>{
+        trash.addEventListener("click",(e)=>{
+            const id = trash.id
+            const init ={
+                method:"DELETE",
+                headers:{"content-Type":"application/json"}
+            }
+            fetch("http://localhost:5678/api/works/" +id,init)
+            .then((response)=>{
+                if (!response.ok){
+                console.log("success")
+                }
+                return response.json()
+            })
+        })
+        
+        .then((data)=>{
+            console.log("error",data)
+        })
+    })
+}
 
