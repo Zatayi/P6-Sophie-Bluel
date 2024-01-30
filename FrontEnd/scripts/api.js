@@ -19,3 +19,11 @@ export const postLogin = data => fetch(URL_LOGIN, {
     }
     return response.json()
 })
+
+export const deleteWork = id => fetch(`${URL_WORKS}/${id}`, {
+    method: 'DELETE',
+    headers: {
+        "Accept": 'application/json',
+        "Authorization": `Bearer ${localStorage.token}`
+    }
+})

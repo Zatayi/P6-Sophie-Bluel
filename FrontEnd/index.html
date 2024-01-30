@@ -29,28 +29,53 @@
 	</header>
 	<main>
 		<dialog class="containerModal" aria-hidden="true">
-			<div class="modalGallery">
+			<div class="modal-body">
 				<span><i class="fa-solid fa-xmark"></i></span>
+				<span id="back-arrow"><i class="fa-solid fa-arrow-left"></i></span>
 				<h3>Galerie photo</h3>
 				<div class="ModalListGallery"></div>
-				<hr style="height: 1px;color:#B3B3B3;width: 70%;border-left: none;">
+				<form class="add-photo-container" action="" enctype="multipart/form-data">
+					<div class="Addphoto">
+						<i class="fa-regular fa-image"></i>
+		
+						<input type="file" name="photo" id="photo" class="js-image"  oninput="pic.src=window.URL.createObjectURL(this.files[0])">
+						<img id="pic" />
+						
+						<p>jpg, png : 4mo max</p>
+					</div>
+
+					<div class="form-title">
+						<label for="titre">Titre</label>
+						<input class="js-title" type="text" name="titre" id="titre">
+					</div>
+		
+					<div class="form-id">
+						<label for="categorie">Catégorie</label>
+						<select name="categorie" id="categorie" class="js-categoryId">
+							<option value="1">Objets</option>
+							<option value="2">Appartements</option>
+							<option value="3">Hôtels & restaurants</option>
+						</select>
+					</div>
+				
+					<input type="submit" class="js-add-work" value="Valider">
+					
+					<hr id="add-photo-hr">
+					
+
+
+
+					
+
+
+
+				</form>
+
+				<hr id="modal-hr">
 				<button id="newphotobtn">Ajouter une photo</button>
 			</div>
 		</dialog>
-		<dialog class="AddPhotoModal" aria-hidden="true">
-			<div class="modalGallery">
-				<span><i class="fa-solid fa-arrow-left"></i></span>
-				<span><i class="fa-solid fa-xmark"></i></span>
-				<h3>Ajout photo</h3>
-				<div class="Addphoto">
-					<i class="fa-regular fa-image"></i>
-					<button>+ Ajouter photo</button>
-					<p>jpg, png : 4mo max</p>
-				</div>
-				<div class="ModalListGallery"></div>
-				<hr style="height: 1px;color:#B3B3B3;width: 70%;border-left: none;">
-				<button id="valider">Valider</button>
-			</div>
+		
 		</dialog>
 		<section id="introduction">
 			<figure>
@@ -68,9 +93,12 @@
 			</article>
 		</section>
 		<section id="portfolio">
-			<h2>Mes Projets <span class="modifier"><i class="fa-regular fa-pen-to-square"></i>modifier</span></h2>
+			
+				<h2>Mes Projets <span class="modifier"><i class="fa-regular fa-pen-to-square"></i>modifier</span></h2>
+			
+			
 			<div class="filters">
-				<button type="button" id="filter-all"autofocus>Tous</button>
+				<button type="button" id="filter-all" autofocus>Tous</button>
 			</div>
 			<div class="categories">
 
@@ -103,6 +131,8 @@
 			</ul>
 		</nav>
 	</footer>
+
+	
 
 	<script type="module" src="./scripts/index.js"></script>
 </body>

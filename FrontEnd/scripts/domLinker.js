@@ -6,13 +6,14 @@ export const btnFilterAll = document.querySelector('#filter-all')
 export const modifier = document.querySelector('.modifier')
 export const aLogin = document.getElementById('a-login')
 /*** index.html - modal ***/
-export const photoModal = document.querySelector('.AddPhotoModal')
 export const modal = document.querySelector('.containerModal')
 export const iconCloseModal = document.querySelector(".containerModal .fa-xmark");
-export const iconCloseModalphoto = document.querySelector(".AddPhotoModal .fa-xmark");
-export const backarrow = document.querySelector(".AddPhotoModal .fa-arrow-left")
+export const backarrow = document.querySelector("#back-arrow")
 export const ModalListGallery = document.querySelector(".ModalListGallery")
-export const TrashAll = document.querySelectorAll(".fa-trash-can")
+export const modalHr = document.getElementById('add-photo-hr')
+export const btnValidateAddPhoto = document.getElementById('valider')
+export const formAddPhoto = document.querySelector('.add-photo-container')
+export const btnNewPhoto = document.getElementById('newphotobtn')
 /*** login.html ***/
 export const formLogin = document.querySelector('.form')
 export const email = document.getElementById("email")

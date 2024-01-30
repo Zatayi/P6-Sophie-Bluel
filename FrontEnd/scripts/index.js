@@ -1,7 +1,7 @@
-import { gallery, filters, btnFilterAll, ModalListGallery, modifier, aLogin, TrashAll } from "./domLinker.js";
-import { getWorks, getCategories, getWorksByCategoryId } from "./api.js";
+import { gallery, filters, btnFilterAll, ModalListGallery, modifier, aLogin } from "./domLinker.js";
+import { getWorks, getCategories, getWorksByCategoryId, deleteWork } from "./api.js";
 import Modal from "./modal.js";
-import Addphotomodal from "./addphotomodal.js";
+// import Addphotomodal from "./addphotomodal.js";
 
 
 
@@ -27,7 +27,7 @@ const creatework = data => {
     gallery.appendChild(figure);
 }
 
-//deleteWorks()
+
 getWorks().then(data => createWorks(data))
 
 const createWorkmodal = data => {
@@ -40,6 +40,13 @@ const createWorkmodal = data => {
     span.appendChild(trash)
     figure.appendChild(img);
     figure.appendChild(span);
+
+    trash.addEventListener('click', () => {
+        deleteWork(data.id)
+            .then(() => getWorks())
+            .then(data => createWorks(data))
+    })
+
     ModalListGallery.appendChild(figure);
 }
 
@@ -79,6 +86,4 @@ if (localStorage.token) {
 aLogin.addEventListener('click', () => localStorage.removeItem('token'))
 
 Modal()
-Addphotomodal()
-
 
