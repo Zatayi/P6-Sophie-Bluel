@@ -621,3 +621,9 @@ input[type="file"] {
 	color: #306685;
 	font-size: small;
 }
+
+#pic{
+	position: absolute;
+	top: 187px;
+	height: 147px;
+}
