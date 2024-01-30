@@ -460,7 +460,7 @@ figure {
 	display: flex;
 	justify-content: space-between;
 	position: absolute;
-
+	width: 82px;
 }
 
 .ModalListGallery span {
@@ -626,4 +626,5 @@ input[type="file"] {
 	position: absolute;
 	top: 187px;
 	height: 147px;
+	
 }
