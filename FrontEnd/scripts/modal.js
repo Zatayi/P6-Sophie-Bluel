@@ -1,4 +1,4 @@
-import { backarrow, modal, iconCloseModal, modifier, ModalListGallery, formAddPhoto, btnNewPhoto, modalHr } from "./domLinker.js"
+import { backarrow, modal, iconCloseModal, modifier, ModalListGallery, formAddPhoto, btnNewPhoto, modalHr, image, categoryId, title} from "./domLinker.js"
 
 const Modal = () => {
   const closeModal = () => {
@@ -80,11 +80,6 @@ btnAjouterProjet.addEventListener("click", addWork);
 // Ajouter un projet
 async function addWork(event) {
     event.preventDefault();
-
-    const title = document.querySelector(".js-title").value;
-    const categoryId = document.querySelector(".js-categoryId").value;
-    const image = document.querySelector(".js-image").files[0];
-
 
     if (title === "" || categoryId === "" || image === undefined) {
         alert("Les champs ne sont pas tous remplis");
