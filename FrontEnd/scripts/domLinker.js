@@ -14,6 +14,10 @@ export const modalHr = document.getElementById('add-photo-hr')
 export const btnValidateAddPhoto = document.getElementById('valider')
 export const formAddPhoto = document.querySelector('.add-photo-container')
 export const btnNewPhoto = document.getElementById('newphotobtn')
+export const filePhoto = document.getElementById('photo')
+export const preview = document.getElementById('pic')
+export const title = document.querySelector(".js-title")
+export const categoryId = document.querySelector(".js-categoryId")
 
 
 /*** login.html ***/

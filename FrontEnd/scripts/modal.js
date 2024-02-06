@@ -1,9 +1,14 @@
-import { backarrow, modal, iconCloseModal, modifier, ModalListGallery, formAddPhoto, btnNewPhoto, modalHr} from "./domLinker.js"
+import {
+  backarrow, modal, iconCloseModal, modifier, ModalListGallery, formAddPhoto, btnNewPhoto,
+  modalHr, filePhoto, preview, title, categoryId, btnValidateAddPhoto
+} from "./domLinker.js"
+import { postWork } from "./api.js"
 
 const Modal = () => {
   const closeModal = () => {
     modal.style.display = "none"
     modal.setAttribute('aria-hidden', true)
+    
   }
   const openModal = () => {
     modal.style.display = 'flex'
@@ -16,8 +21,10 @@ const Modal = () => {
   }
 
   /*** event listerner modal ***/
-  iconCloseModal.addEventListener('click', () => closeModal())
-
+  iconCloseModal.addEventListener('click', () => {
+    preview.remove()
+    closeModal()
+  })
   modifier.addEventListener('click', () => openModal())
 
   btnNewPhoto.addEventListener('click', () => {
@@ -26,6 +33,7 @@ const Modal = () => {
     backarrow.style.display = 'block'
     btnNewPhoto.style.display = 'none'
     modalHr.style.display = 'none'
+    
   })
 
   //arrow return//
@@ -35,10 +43,19 @@ const Modal = () => {
     backarrow.style.display = 'none'
     btnNewPhoto.style.display = 'flex'
     modalHr.style.display = 'flex'
+    preview.remove()
   })
+  
+  filePhoto.addEventListener('change', () => {
+    const [file] = filePhoto.files
+    
+    preview.src = URL.createObjectURL(file)
+    
+
+  })
+
 }
 export default Modal
-
 
 
 // //bouton > photomodal//
@@ -74,55 +91,53 @@ export default Modal
 // }
 // deleteWork()
 
-const btnAjouterProjet = document.querySelector(".js-add-work");
-btnAjouterProjet.addEventListener("click", addWork);
+// const btnAjouterProjet = document.querySelector(".js-add-work");
+// btnAjouterProjet.addEventListener("click", addWork);
 
+const submitButton = document.querySelector('js-add-work')
+
+
+formAddPhoto.addEventListener('submit', e => addWork(e))
 
 // Ajouter un projet
-async function addWork(event) {
-    event.preventDefault();
+const addWork = event => {
+  event.preventDefault();
 
-    const image = document.querySelector(".js-image").files[0];
-    const title = document.querySelector(".js-title").value;
-    const categoryId = document.querySelector(".js-categoryId").value;
+  const image = filePhoto.files[0];
 
-    if (title === "" || categoryId === "" || image === undefined) {
-        alert("Les champs ne sont pas tous remplis");
-        return;
-    } else if (categoryId !== "1" && categoryId !== "2" && categoryId !== "3") {
-        alert("Cette catégorie n'est pas valide");
-        return;
-        } else {
-    try {
-        const formData = new FormData();
-        formData.append("title", title);
-        formData.append("category", categoryId);
-        formData.append("image", image);
+  if (title.value === "" || categoryId.value === "" || image === undefined) {
+    alert("Les champs ne sont pas tous remplis");
+    return;
+  } else if (categoryId.value !== "1" && categoryId.value !== "2" && categoryId.value !== "3") {
+    alert("Cette catégorie n'est pas valide");
+    return;
+  } else if (image.size > 4 * 1024 * 1024) {
+    alert("Taille maximum 4mo");
+    return;
+  } else {
+    const formData = new FormData();
+    formData.append("title", title.value);
+    formData.append("category", categoryId.value);
+    formData.append("image", image);
 
-        const response = await fetch("http://localhost:5678/api/works", {
-          method: "POST",
-          headers: {
-              Authorization: `Bearer ${token}`,
-          },
-          body: formData,
-        });
+    postWork(formData)
+      .then(response => {
+        window.location.reload();
+      })
+  }
+}
 
-        if (response.status === 201) {
-            alert("Le projet est ajouté");
-            backarrow()
-            
-        } else if (response.status === 400) {
-            alert("Les champs ne sont pas tous remplis");
-        } else if (response.status === 500) {
-            alert("Error");
-        } else if (response.status === 401) {
-            alert("Autorisation non valide");
-            window.location.href = "login.html";
-    }}
+function disableForm() {
+  if (title.value === "" && categoryId.value === "" && image === undefined) {
+    btnValidateAddPhoto.style.backgroundColor = '#CBD6DC';
+    btnValidateAddPhoto.disabled = "true";
+  } else {
+    btnValidateAddPhoto.disabled = "false";
+    btnValidateAddPhoto.style.backgroundColor = '';
+    }
+  }
+//disableForm()  
 
-    catch (error) {
-        console.log(error);
-}}}
 
-const token = localStorage.getItem("token");
+
 
