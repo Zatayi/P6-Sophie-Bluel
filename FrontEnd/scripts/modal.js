@@ -23,6 +23,7 @@ const Modal = () => {
   /*** event listerner modal ***/
   iconCloseModal.addEventListener('click', () => {
     preview.remove()
+    document.getElementsById('form').reset();
     closeModal()
   })
   modifier.addEventListener('click', () => openModal())
@@ -44,6 +45,7 @@ const Modal = () => {
     btnNewPhoto.style.display = 'flex'
     modalHr.style.display = 'flex'
     preview.remove()
+    document.getElementsById('form').reset();
   })
   
   filePhoto.addEventListener('change', () => {
@@ -111,7 +113,7 @@ const addWork = event => {
   } else if (categoryId.value !== "1" && categoryId.value !== "2" && categoryId.value !== "3") {
     alert("Cette catégorie n'est pas valide");
     return;
-  } else if (image.size > 4 * 1024 * 1024) {
+  } else if (filePhoto.size > 4 * 1024 * 1024) {
     alert("Taille maximum 4mo");
     return;
   } else {
@@ -130,10 +132,10 @@ const addWork = event => {
 function disableForm() {
   if (title.value === "" && categoryId.value === "" && image === undefined) {
     btnValidateAddPhoto.style.backgroundColor = '#CBD6DC';
-    btnValidateAddPhoto.disabled = "true";
+    
   } else {
     btnValidateAddPhoto.disabled = "false";
-    btnValidateAddPhoto.style.backgroundColor = '';
+    btnValidateAddPhoto.style.backgroundColor = '#1D6154';
     }
   }
 //disableForm()  
