@@ -23,7 +23,7 @@ const Modal = () => {
   /*** event listerner modal ***/
   iconCloseModal.addEventListener('click', () => {
     preview.remove()
-    document.getElementsById('form').reset();
+    
     closeModal()
   })
   modifier.addEventListener('click', () => openModal())
