@@ -2,14 +2,17 @@ import {
   backarrow, modal, iconCloseModal, modifier, ModalListGallery, formAddPhoto, btnNewPhoto,
   modalHr, filePhoto, preview, title, categoryId, btnValidateAddPhoto
 } from "./domLinker.js"
-import { postWork } from "./api.js"
+import { postWork, getWorks } from "./api.js"
+import { createWorks } from "./index.js"
+
+const closeModal = () => {
+  modal.style.display = "none"
+  modal.setAttribute('aria-hidden', true)
+
+}
 
 const Modal = () => {
-  const closeModal = () => {
-    modal.style.display = "none"
-    modal.setAttribute('aria-hidden', true)
-    
-  }
+
   const openModal = () => {
     modal.style.display = 'flex'
     modal.setAttribute('aria-hidden', false)
@@ -22,8 +25,8 @@ const Modal = () => {
 
   /*** event listerner modal ***/
   iconCloseModal.addEventListener('click', () => {
-    preview.remove()
-    
+    preview.style.display = "none"
+
     closeModal()
   })
   modifier.addEventListener('click', () => openModal())
@@ -34,7 +37,8 @@ const Modal = () => {
     backarrow.style.display = 'block'
     btnNewPhoto.style.display = 'none'
     modalHr.style.display = 'none'
-    
+    preview.style.display = "block"
+    preview.style.height = "0px"
   })
 
   //arrow return//
@@ -44,59 +48,36 @@ const Modal = () => {
     backarrow.style.display = 'none'
     btnNewPhoto.style.display = 'flex'
     modalHr.style.display = 'flex'
-    preview.remove()
-    document.getElementsById('form').reset();
+    preview.style.display = "none"
+    formAddPhoto.reset();
   })
-  
+
   filePhoto.addEventListener('change', () => {
     const [file] = filePhoto.files
-    
-    preview.src = URL.createObjectURL(file)
-    
+    fileUpload = file
 
+    if (fileUploadIsValid()) {
+      preview.src = URL.createObjectURL(file)
+      preview.style.height = "176px"
+    } else {
+      alert("Le format de fichier est invalide ou l'image est trop volumineuse")
+    }
+
+    console.log(file)
+    // checkFormIsValid()
+    formIsValid()
+
+  })
+
+  title.addEventListener('input', () => {
+    titleIsValid()
+    formIsValid()
   })
 
 }
 export default Modal
 
-
-// //bouton > photomodal//
-// newphotobtn.addEventListener('click', function () {
-//   photoModal.style.display = 'flex';
-//   modal.style.display = 'none';
-// })
-
-
-
-//Delete work//
-// function deleteWork(workId) {
-//   const token = sessionStorage.getItem("Token");
-//   const acceptsuppr = confirm("Êtes-vous sûr de vouloir supprimer?");
-//   if (acceptsuppr) {
-//     fetch(`http://localhost:5678/api/works/${workId}`, {
-//       method: 'DELETE',
-//       headers: {
-//         "Accept": 'application/json',
-//         "Authorization": `Bearer ${token}`
-//       }
-//     })
-//       .then(response => {
-//         if (!response.ok) {
-//           throw new error("La supression n'a pas abouti");
-//         }
-//         const WorkRemove = document.querySelector(`figure[data-id="${workId}"]`);
-//         if (WorkRemove) {
-//           WorkRemove.remove();
-//         }
-//       })
-//   }
-// }
-// deleteWork()
-
-// const btnAjouterProjet = document.querySelector(".js-add-work");
-// btnAjouterProjet.addEventListener("click", addWork);
-
-const submitButton = document.querySelector('js-add-work')
+let fileUpload, titleInput, categoryIdSelect
 
 
 formAddPhoto.addEventListener('submit', e => addWork(e))
@@ -113,7 +94,7 @@ const addWork = event => {
   } else if (categoryId.value !== "1" && categoryId.value !== "2" && categoryId.value !== "3") {
     alert("Cette catégorie n'est pas valide");
     return;
-  } else if (filePhoto.size > 4 * 1024 * 1024) {
+  } else if (image.size > 4 * 1024 * 1024) {
     alert("Taille maximum 4mo");
     return;
   } else {
@@ -123,8 +104,10 @@ const addWork = event => {
     formData.append("image", image);
 
     postWork(formData)
-      .then(response => {
-        window.location.reload();
+      .then(() => getWorks())
+      .then(data => {
+        createWorks(data)
+        closeModal()
       })
   }
 }
@@ -132,13 +115,31 @@ const addWork = event => {
 function disableForm() {
   if (title.value === "" && categoryId.value === "" && image === undefined) {
     btnValidateAddPhoto.style.backgroundColor = '#CBD6DC';
-    
+
   } else {
     btnValidateAddPhoto.disabled = "false";
     btnValidateAddPhoto.style.backgroundColor = '#1D6154';
-    }
   }
-//disableForm()  
+}
+
+const fileUploadIsValid = () => fileUpload.size <= 4 * 1024 * 1024 && ["image/jpeg", "image/png"].includes(fileUpload.type)
+
+const titleIsValid = () => {
+  titleInput = title.value
+  return titleInput.length > 0
+}
+
+const formIsValid = () => {
+  if (fileUploadIsValid() && titleIsValid()) {
+    btnValidateAddPhoto.removeAttribute('disabled')
+    btnValidateAddPhoto.style.backgroundColor = '#1D6154';
+  } else {
+    btnValidateAddPhoto.setAttribute('disabled', true)
+    btnValidateAddPhoto.style.backgroundColor = '#CBD6DC';
+  }
+}
+
+  
 
 
 

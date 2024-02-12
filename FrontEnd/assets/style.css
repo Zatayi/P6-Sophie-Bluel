@@ -159,7 +159,8 @@ body {
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 80px 0
+	
 }
 
 section {
@@ -353,17 +354,15 @@ input[type="submit"] {
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
-	background-color: #A7A7A7;
+	background-color: #1D6154;
 	margin: 2em auto;
 	width: 180px;
-	height: 36px;
-
 	text-align: center;
 	border-radius: 60px;
 	cursor: pointer;
+	height: 36px;
+	border:unset;
 }
-
-
 
 #email {
 	margin-top: 10px;
@@ -423,6 +422,7 @@ figure {
 }
 
 .modal-body button {
+	justify-content: center;
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
@@ -433,6 +433,7 @@ figure {
 	text-align: center;
 	border-radius: 60px;
 	cursor: pointer;
+	border: unset;
 }
 
 .modal-body img {
@@ -518,7 +519,10 @@ figure {
 }
 
 #valider {
+	padding-left: 65px;
 	background-color: #A7A7A7;
+	text-align: center;
+	justify-content: center;
 }
 
 .fa-image {
@@ -650,4 +654,34 @@ input[type="file"] {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.edit{
+	display: flex;
+	position:absolute;
+	display: none;
+	align-items: center;
+	color: white;
+	justify-content: center;
+	background-color: black;
+	height: 59px;
+	width: 100%;
+	top: 0;
+	left: 0;
+}
+
+
+/*header{
+	display: flex;
+	flex-direction: column;
+}
+
+.archipres{
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }

@@ -1,11 +1,11 @@
-import { gallery, filters, btnFilterAll, ModalListGallery, modifier, aLogin } from "./domLinker.js";
+import { gallery, filters, btnFilterAll, ModalListGallery, modifier, aLogin, editHeader } from "./domLinker.js";
 import { getWorks, getCategories, getWorksByCategoryId, deleteWork } from "./api.js";
 import Modal from "./modal.js";
 // import Addphotomodal from "./addphotomodal.js";
 
 
 
-const createWorks = data => {
+export const createWorks = data => {
     gallery.innerHTML = ''
     ModalListGallery.innerHTML = ''
 
@@ -78,6 +78,7 @@ getCategories().then(data => displayCategoriesButtons(data))
 
 
 if (localStorage.token) {
+    editHeader.style.display ="flex"
     modifier.style.display = "flex"
     filters.style.display = 'none'
     aLogin.innerHTML = 'Logout'

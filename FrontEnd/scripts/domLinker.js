@@ -18,7 +18,7 @@ export const filePhoto = document.getElementById('photo')
 export const preview = document.getElementById('pic')
 export const title = document.querySelector(".js-title")
 export const categoryId = document.querySelector(".js-categoryId")
-
+export const editHeader = document.querySelector(".edit")
 
 /*** login.html ***/
 export const formLogin = document.querySelector('.form')

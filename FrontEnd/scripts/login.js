@@ -14,6 +14,7 @@ formLogin.addEventListener("submit", e => {
       //const login = true;
       const element = document.getElementsByClassName
       element.remove()
+      
     })
     .catch(error => alert(error))
   //const login = false;

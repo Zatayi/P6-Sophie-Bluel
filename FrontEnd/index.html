@@ -15,6 +15,10 @@
 </head>
 
 <body>
+	<div class ="edit">
+		<i class="fa-regular fa-pen-to-square"></i>
+		<p>mode édition</p>
+	</div>
 	<header>
 		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 		<nav>
@@ -28,48 +32,6 @@
 		</nav>
 	</header>
 	<main>
-		<dialog class="containerModal" aria-hidden="true">
-			<div class="modal-body">
-				<span><i class="fa-solid fa-xmark"></i></span>
-				<span id="back-arrow"><i class="fa-solid fa-arrow-left"></i></span>
-				<h3>Galerie photo</h3>
-				<div class="ModalListGallery"></div>
-				<form class="add-photo-container" action="" enctype="multipart/form-data">
-					<div class="Addphoto">
-						<i class="fa-regular fa-image"></i>
-						<label for="photo">+ Ajouter photo</label>
-						<input type="file" name="photo" id="photo" class="js-image" accept="image/png, image/jpg">
-						<img id="pic" />
-
-						<p>jpg, png : 4mo max</p>
-					</div>
-
-					<div class="form-title">
-						<label for="titre">Titre</label>
-						<input class="js-title" type="text" name="titre" id="titre">
-					</div>
-
-					<div class="form-id">
-						<label for="categorie">Catégorie</label>
-						<select name="categorie" id="categorie" class="js-categoryId">
-							<option value="1">Objets</option>
-							<option value="2">Appartements</option>
-							<option value="3">Hôtels & restaurants</option>
-						</select>
-					</div>
-
-					<hr id="add-photo-hr">
-
-					<input type="submit" class="js-add-work" id="form" value="Valider" data-maxFileSize="4" >
-
-				</form>
-
-				<hr id="modal-hr">
-				<button id="newphotobtn">Ajouter une photo</button>
-			</div>
-		</dialog>
-
-		</dialog>
 		<section id="introduction">
 			<figure>
 				<img src="./assets/images/sophie-bluel.png" alt="">
@@ -109,12 +71,53 @@
 				<label for="name">Nom</label>
 				<input type="text" name="name" id="name">
 				<label for="email">Email</label>
-				<input type="email" name="email" id="email">
+				<input type="email" name="email" id="mail">
 				<label for="message">Message</label>
 				<textarea name="message" id="message" cols="30" rows="10"></textarea>
-				<input type="submit" value="Envoyer">
+				<input class="send" type="submit" value="Envoyer">
 			</form>
 		</section>
+		<dialog class="containerModal" aria-hidden="true">
+			<div class="modal-body">
+				<span><i class="fa-solid fa-xmark"></i></span>
+				<span id="back-arrow"><i class="fa-solid fa-arrow-left"></i></span>
+				<h3>Galerie photo</h3>
+				<div class="ModalListGallery"></div>
+				<form class="add-photo-container" enctype="multipart/form-data">
+					<div class="Addphoto">
+						<i class="fa-regular fa-image"></i>
+						<label for="photo">+ Ajouter photo</label>
+						<input type="file" name="photo" id="photo" class="js-image" accept="image/png, image/jpeg">
+						<img src="preset" id="pic" alt="preset">
+
+						<p>jpg, png : 4mo max</p>
+					</div>
+
+					<div class="form-title">
+						<label for="titre">Titre</label>
+						<input class="js-title" type="text" name="titre" id="titre">
+					</div>
+
+					<div class="form-id">
+						<label for="categorie">Catégorie</label>
+						<select name="categorie" id="categorie" class="js-categoryId">
+							<option value="1">Objets</option>
+							<option value="2">Appartements</option>
+							<option value="3">Hôtels & restaurants</option>
+						</select>
+					</div>
+
+					<hr id="add-photo-hr">
+
+					<input type="submit" id="valider" class="js-add-work form" value="Valider"
+						data-maxFileSize="4">
+
+				</form>
+
+				<hr id="modal-hr">
+				<button id="newphotobtn">Ajouter une photo</button>
+			</div>
+		</dialog>
 	</main>
 
 	<footer>
