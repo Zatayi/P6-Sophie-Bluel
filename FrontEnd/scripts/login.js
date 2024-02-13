@@ -11,10 +11,6 @@ formLogin.addEventListener("submit", e => {
     .then(data => {
       localStorage.token = data.token
       window.location.replace("index.html");
-      //const login = true;
-      const element = document.getElementsByClassName
-      element.remove()
-      
     })
     .catch(error => alert(error))
   //const login = false;
