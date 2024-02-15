@@ -607,6 +607,7 @@ figure {
 	margin: auto;
 	width: 420px;
 	padding-top: 20px;
+	margin-bottom: 40px;
 
 }
 
@@ -629,7 +630,7 @@ input[type="file"] {
 }
 #pic {
 	position: absolute;
-	top: 168px;
+	top: 155px;
 	height: 176px;
 	
 	

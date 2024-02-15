@@ -11,6 +11,7 @@ export const iconCloseModal = document.querySelector(".containerModal .fa-xmark"
 export const backarrow = document.querySelector("#back-arrow")
 export const ModalListGallery = document.querySelector(".ModalListGallery")
 export const modalHr = document.getElementById('add-photo-hr')
+export const Hrform = document.getElementById('modal-hr')
 export const btnValidateAddPhoto = document.getElementById('valider')
 export const formAddPhoto = document.querySelector('.add-photo-container')
 export const btnNewPhoto = document.getElementById('newphotobtn')

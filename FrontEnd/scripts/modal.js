@@ -1,6 +1,6 @@
 import {
   backarrow, modal, iconCloseModal, modifier, ModalListGallery, formAddPhoto, btnNewPhoto,
-  modalHr, filePhoto, preview, title, categoryId, btnValidateAddPhoto
+  modalHr, filePhoto, preview, title, categoryId, btnValidateAddPhoto, Hrform
 } from "./domLinker.js"
 import { postWork, getWorks } from "./api.js"
 import { createWorks } from "./index.js"
@@ -20,13 +20,15 @@ const Modal = () => {
     formAddPhoto.style.display = 'none'
     backarrow.style.display = 'none'
     btnNewPhoto.style.display = 'flex'
-    modalHr.style.display = 'flex'
+    
+    
   }
 
   /*** event listerner modal ***/
   iconCloseModal.addEventListener('click', () => {
     preview.style.display = "none"
-
+    modalHr.style.display = "none"
+    Hrform.style.display = "flex"
     closeModal()
   })
   modifier.addEventListener('click', () => openModal())
@@ -36,9 +38,10 @@ const Modal = () => {
     formAddPhoto.style.display = 'flex'
     backarrow.style.display = 'block'
     btnNewPhoto.style.display = 'none'
-    modalHr.style.display = 'none'
     preview.style.display = "block"
     preview.style.height = "0px"
+    modalHr.style.display = "flex"
+    Hrform.style.display = "none"
   })
 
   //arrow return//
@@ -47,8 +50,9 @@ const Modal = () => {
     formAddPhoto.style.display = 'none'
     backarrow.style.display = 'none'
     btnNewPhoto.style.display = 'flex'
-    modalHr.style.display = 'flex'
     preview.style.display = "none"
+    modalHr.style.display = "none"
+    Hrform.style.display = "flex"
     formAddPhoto.reset();
   })
 
